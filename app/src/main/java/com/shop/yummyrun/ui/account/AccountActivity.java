@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.shop.yummyrun.R;
 import com.shop.yummyrun.adapter.OrderAdapter;
 import com.shop.yummyrun.model.Order;
@@ -27,6 +29,7 @@ public class AccountActivity extends AppCompatActivity {
 
     private List<Order> orders = new ArrayList<>();
     private OrderAdapter orderAdapter;
+    private FirebaseAuth mAuth;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,14 +37,21 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        mAuth = FirebaseAuth.getInstance();
+
         TextView emailTextView = findViewById(R.id.emailTextView);
         Button signOutButton = findViewById(R.id.signOutButton);
-
+        FirebaseUser user = mAuth.getCurrentUser();
         SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
-        String userEmail = preferences.getString("email", "Гость");
-        emailTextView.setText("Email: " + userEmail);
+        if (user != null) {
+            emailTextView.setText("Email: " + user.getEmail());
+        }else{
+            String userEmail = preferences.getString("email", "Гость");
+            emailTextView.setText("Email: " + userEmail);
+        }
 
         signOutButton.setOnClickListener(v -> {
+            mAuth.signOut();
             preferences.edit().clear().apply();
             startActivity(new Intent(AccountActivity.this, LoginActivity.class));
             finish();
