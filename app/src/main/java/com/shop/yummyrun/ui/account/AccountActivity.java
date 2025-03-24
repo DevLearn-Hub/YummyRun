@@ -72,6 +72,7 @@ public class AccountActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void loadOrders() {
         SharedPreferences preferences = getSharedPreferences("orders", MODE_PRIVATE);
         orders.clear();

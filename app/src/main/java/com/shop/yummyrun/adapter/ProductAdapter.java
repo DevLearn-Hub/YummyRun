@@ -60,7 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    // Filter method to apply filtering
+    @SuppressLint("NotifyDataSetChanged")
     public void filter(List<Product> filteredList) {
         this.productList = filteredList;
         notifyDataSetChanged();

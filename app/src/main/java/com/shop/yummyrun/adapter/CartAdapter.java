@@ -84,8 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             productPrice = itemView.findViewById(R.id.productPrice);
             productQuantity = itemView.findViewById(R.id.productQuantity);
             removeButton = itemView.findViewById(R.id.removeButton);
-            increaseButton = itemView.findViewById(R.id.increaseButton);  // Кнопка увеличения
-            decreaseButton = itemView.findViewById(R.id.decreaseButton);  // Кнопка уменьшения
+            increaseButton = itemView.findViewById(R.id.increaseButton);
+            decreaseButton = itemView.findViewById(R.id.decreaseButton);
         }
     }
 }

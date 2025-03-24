@@ -42,11 +42,16 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         productList = new ArrayList<>();
 
-        productList.add(new Product("Мини-чиабатта с куриной ветчиной", "Описание", 298, R.drawable.chibata, "Сэндвичи"));
-        productList.add(new Product("Пицца с ветчиной", "Описание", 499, R.drawable.pizza, "Пицца"));
-        productList.add(new Product("Салат Цезарь", "Описание", 150, R.drawable.salad, "Салаты"));
-        productList.add(new Product("Пицца Маргарита", "Описание", 350, R.drawable.pizza, "Пицца"));
-        productList.add(new Product("Цезарь с курицей", "Описание", 220, R.drawable.salad, "Салаты"));
+        productList.add(new Product("Мини-чиабатта с куриной ветчиной", "Сытный завтрак в удобном формате сэндвича. В наборе 2 мини-чиабатты с классическим для утра набором: нежным омлетом, ломтиками ветчины и сыра, свежими овощами и соусом.", 298, R.drawable.chibata, "Сэндвичи"));
+        productList.add(new Product("Пицца римская «Овощная»", "В этой пицце нет мяса, яиц и молочных продуктов, зато есть насыщенный пряно-овощной вкус. Воздушное тесто покрыто густым томатным соусом с ароматным орегано. Начинка собрана из цукини, сладкого перца, черри и оливок халкидики.", 470, R.drawable.pizza, "Пицца"));
+        productList.add(new Product("Салат «Витаминный» с лимонной заправкой", "Полезный летний салат из свежих овощей: капусты, огурцов, моркови и сладкого перца. Чтобы внести во вкус яркие нотки, мы выбрали заправку из растительного масла с ароматным цветочным мёдом.", 208, R.drawable.salad1, "Салаты"));
+        productList.add(new Product("Салат «Цезарь»", "Один из самых популярных салатов с классическим составом. Заботливо приготовлен из ломтиков нежного куриного филе, сладких томатов черри и упругих салатных дистьев.", 328, R.drawable.salad2, "Салаты"));
+        productList.add(new Product("Пицца 4 сыра", "Аппетитная пицца для любителей сыра. В начинку входит нежная моцарелла, чеддер с ореховым послевкусием, терпкий маасдам и сладковато-острый пармезан.", 488, R.drawable.pizza2, "Пицца"));
+        productList.add(new Product("Пицца «Пепперони Салями»", "Почти готовая пицца с двумя видами сырокопчёной колбасы, нежной моцареллой и пряным томатным соусом. Нужно лишь отправить на несколько минут в духовку или СВЧ-печь. Когда сыр станет аппетитно тягучим — пиццу можно подавать к столу!", 488, R.drawable.pizza3, "Пицца"));
+        productList.add(new Product("Салат с тунцом и горчичным соусом", "урманский салат с консервированным тунцом, сладкими томатами черри и свежим редисом на подушке из упругой свежей зелени. Чтобы сделать блюдо ещё более сочным, а вкус — многогранным.", 320, R.drawable.salad3, "Салаты"));
+        productList.add(new Product("Клаб-сэндвич с курицей и яйцом", "Мы не устаём пополнять ассортимент сэндвичами — чтобы ваши завтраки и перекусы были вкусными, питательными и разнообразными! В данном случае в качестве начинки выступают аппетитная копчёно-варёная курица, яйца, сыр.", 218, R.drawable.sendvich1, "Сэндвичи"));
+        productList.add(new Product("Клаб-сэндвич с курицей и беконом на хлебе со злаками", "Запечённая куриная грудка, хрустящий бекон, свежие овощи и лёгкий соус на основе майонеза и горчицы создают идеальное сочетание текстур и ароматов. Хлеб с семенами льна, подсолнечника и кунжута.", 228, R.drawable.sendvich2, "Сэндвичи"));
+        productList.add(new Product("Бутерброд с тунцом и базиликом", "Ломтики мягкого ржано-пшеничного хлеба с нежным тунцом, свежим базиликом и сочным сельдереем. Добавили много начинки, чтобы вы точно остались сытыми.", 258, R.drawable.sendvich3, "Сэндвичи"));
 
         filteredProductList = new ArrayList<>(productList);
 
@@ -93,18 +98,17 @@ public class HomeActivity extends AppCompatActivity {
                 String category = null;
                 String price = null;
                 if (chip.getId() == R.id.chipAll) {
-                    // Show all products
                     filterProducts(null, null, null);
                 } else if (chip.getId() == R.id.chipCategory1) {
-                    category = "Сэндвичи"; // Category 1
+                    category = "Сэндвичи";
                 } else if (chip.getId() == R.id.chipCategory2) {
-                    category = "Пицца"; // Category 2
+                    category = "Пицца";
                 } else if (chip.getId() == R.id.chipCategory3) {
-                    category = "Салаты"; // Category 2
+                    category = "Салаты";
                 } else if (chip.getId() == R.id.chipPriceLow) {
-                    price = "low";  // Low price filter
+                    price = "low";
                 } else if (chip.getId() == R.id.chipPriceHigh) {
-                    price = "high";  // High price filter
+                    price = "high";
                 }
                 filterProducts(null, category, price);
             });
