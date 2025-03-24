@@ -4,13 +4,27 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 public class ConfirmOrderDialog {
-    public static void show(Context context, final Runnable onConfirm, final Runnable onCancel) {
+
+    public interface ConfirmListener {
+        void onConfirm();
+    }
+
+    public interface CancelListener {
+        void onCancel();
+    }
+
+    public static void show(Context context, ConfirmListener confirmListener, CancelListener cancelListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Вы уверены, что хотите оформить заказ?")
-                .setCancelable(false)
-                .setPositiveButton("Да", (dialog, id) -> onConfirm.run())
-                .setNegativeButton("Нет", (dialog, id) -> onCancel.run());
-        AlertDialog alert = builder.create();
-        alert.show();
+        builder.setTitle("Подтвердить заказ")
+                .setMessage("Вы уверены, что хотите оформить заказ?")
+                .setPositiveButton("Да", (dialog, which) -> {
+                    confirmListener.onConfirm();
+                    dialog.dismiss();
+                })
+                .setNegativeButton("Нет", (dialog, which) -> {
+                    cancelListener.onCancel();
+                    dialog.dismiss();
+                })
+                .show();
     }
 }

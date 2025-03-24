@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.shop.yummyrun.R;
 import com.shop.yummyrun.adapter.CartAdapter;
 import com.shop.yummyrun.model.CartItem;
+import com.shop.yummyrun.model.Order;
 import com.shop.yummyrun.ui.account.AccountActivity;
 import com.shop.yummyrun.ui.checkout.ConfirmOrderDialog;
 import com.shop.yummyrun.ui.home.HomeActivity;
@@ -66,18 +66,18 @@ public class CartActivity extends AppCompatActivity {
             addToCart(cartItem);
         }
 
-        checkoutButton.setOnClickListener(v -> {
-            ConfirmOrderDialog.show(CartActivity.this, this::confirmOrder, this::cancelOrder);
-        });
+        checkoutButton.setOnClickListener(v -> ConfirmOrderDialog.show(this, this::confirmOrder, this::cancelOrder));
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.home) {
-                startActivity(new Intent(CartActivity.this, HomeActivity.class));
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
                 return true;
             } else if (itemId == R.id.account) {
-                startActivity(new Intent(CartActivity.this, AccountActivity.class));
+                startActivity(new Intent(this, AccountActivity.class));
+                finish();
                 return true;
             } else if (itemId == R.id.cart) {
                 return true;
@@ -96,10 +96,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void loadCartFromPreferences() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String userId = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getUid() : "guest";
-
-        SharedPreferences preferences = getSharedPreferences("cart_" + userId, MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("cart", MODE_PRIVATE);
         String cartData = preferences.getString("cart_items", "");
 
         if (!cartData.isEmpty()) {
@@ -121,10 +118,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void saveCartToPreferences() {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String userId = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getUid() : "guest";
-
-        SharedPreferences preferences = getSharedPreferences("cart_" + userId, MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("cart", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         StringBuilder cartData = new StringBuilder();
 
@@ -141,6 +135,35 @@ public class CartActivity extends AppCompatActivity {
 
         editor.putString("cart_items", cartData.toString());
         editor.apply();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void confirmOrder() {
+        String orderId = "order_" + System.currentTimeMillis();
+
+        StringBuilder orderDetails = new StringBuilder();
+        for (CartItem item : cartItems) {
+            orderDetails.append(item.getProductName())
+                    .append(" x ")
+                    .append(item.getQuantity())
+                    .append("\n");
+        }
+
+        Order order = new Order(orderId, orderDetails.toString(), "В обработке");
+
+        SharedPreferences preferences = getSharedPreferences("orders", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(orderId, order.getOrderDetails());
+        editor.apply();
+
+        cartItems.clear();
+        cartAdapter.notifyDataSetChanged();
+        updateTotalPrice();
+        saveCartToPreferences();
+    }
+
+    private void cancelOrder() {
+        // Действия при отмене заказа
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -162,17 +185,4 @@ public class CartActivity extends AppCompatActivity {
         cartAdapter.notifyDataSetChanged();
         updateTotalPrice();
     }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private void confirmOrder() {
-        cartItems.clear();
-        cartAdapter.notifyDataSetChanged();
-        updateTotalPrice();
-        saveCartToPreferences();
-    }
-
-    private void cancelOrder() {
-    }
-    
-
 }

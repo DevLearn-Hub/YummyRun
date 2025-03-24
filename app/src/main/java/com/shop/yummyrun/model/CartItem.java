@@ -19,12 +19,24 @@ public class CartItem implements Serializable {
         return productName;
     }
 
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public int getProductImageResId() {
         return productImageResId;
     }
 
+    public void setProductImageResId(int productImageResId) {
+        this.productImageResId = productImageResId;
+    }
+
     public double getProductPrice() {
         return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public int getQuantity() {
