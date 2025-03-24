@@ -1,0 +1,102 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".ui.home.HomeActivity">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/searchview_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:iconifiedByDefault="false"
+        android:inputType="textVisiblePassword"
+        android:padding="16dp"
+        android:queryHint="Поиск товаров"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_primary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filterChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:paddingStart="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Все" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategory1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сэндвичи" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategory2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Пицца" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipCategory3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Салаты" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPriceLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дешевле" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPriceHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дороже" />
+    </com.google.android.material.chip.ChipGroup>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:padding="24dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterChipGroup" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        app:itemBackground="@color/main_color"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>

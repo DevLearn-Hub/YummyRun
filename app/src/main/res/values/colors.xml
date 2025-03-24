@@ -1,5 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Основные цвета -->
+    <color name="main_color">#F6AE38</color> <!-- Яркий желтый -->
+    <color name="accent_color">#FF5722</color> <!-- Приглушенный оранжевый -->
+
+    <!-- Фоновые цвета -->
+    <color name="background_color">#FFFFFF</color> <!-- Белый для основного фона -->
+    <color name="secondary_background_color">#FFF8E1</color> <!-- Светло-желтый для второстепенных фонов -->
+    <color name="background_color_splash">#FED035</color> <!-- Белый для основного фона -->
+
+    <!-- Текстовые цвета -->
+    <color name="text_primary">#212121</color> <!-- Темный цвет для основного текста -->
+    <color name="text_secondary">#757575</color> <!-- Серый для второстепенного текста -->
+    <color name="text_button">#FFFFFF</color> <!-- Белый для текста кнопок -->
+
+    <!-- Цвета для текста под кнопкой -->
+    <color name="text_link">#FF7043</color> <!-- Более мягкий оранжевый -->
+
+    <!-- Цвета состояния -->
+    <color name="error_color">#D32F2F</color> <!-- Красный для ошибок -->
+    <color name="success_color">#4CAF50</color> <!-- Зеленый для успешных действий -->
+
+    <!-- Прочие цвета -->
+    <color name="divider_color">#BDBDBD</color> <!-- Серый для разделителей -->
+    <color name="highlight_color">#FFC107</color> <!-- Ярко-желтый для выделений -->
+    <color name="black">#1D3149</color> <!-- Ярко-желтый для выделений -->
+
 </resources>

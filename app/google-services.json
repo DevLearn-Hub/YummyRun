@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981256465822",
+    "project_id": "yummyrun-c6a93",
+    "storage_bucket": "yummyrun-c6a93.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981256465822:android:c018906be21dde4fe3fa8f",
+        "android_client_info": {
+          "package_name": "com.shop.yummyrun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFMj4ldUf1x5ReACeLYJhWOfaEEUVo6Yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

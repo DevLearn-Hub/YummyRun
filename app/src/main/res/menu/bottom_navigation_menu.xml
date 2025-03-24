@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Главная"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/account"
+        android:title="Аккаунт"
+        android:icon="@drawable/ic_account" />
+    <item
+        android:id="@+id/cart"
+        android:title="Корзина"
+        android:icon="@drawable/ic_cart" />
+</menu>

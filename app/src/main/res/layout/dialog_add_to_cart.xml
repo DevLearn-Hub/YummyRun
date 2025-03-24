@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/dialogProductImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="Product Image"
+        android:src="@drawable/chibata" />
+
+    <TextView
+        android:id="@+id/dialogProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Product Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialogProductPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Price: 0.00 ₽"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/confirmAddButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Добавить в корзину" />
+
+</LinearLayout>
