@@ -20,14 +20,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     private List<CartItem> cartItems;
     private OnRemoveItemListener onRemoveItemListener;
+    private OnQuantityChangeListener onQuantityChangeListener;
 
     public interface OnRemoveItemListener {
         void onRemoveItem(int position);
     }
 
-    public CartAdapter(List<CartItem> cartItems, OnRemoveItemListener onRemoveItemListener) {
+    public interface OnQuantityChangeListener {
+        void onQuantityChanged(int position, int newQuantity);
+    }
+
+    public CartAdapter(List<CartItem> cartItems, OnRemoveItemListener onRemoveItemListener, OnQuantityChangeListener onQuantityChangeListener) {
         this.cartItems = cartItems;
         this.onRemoveItemListener = onRemoveItemListener;
+        this.onQuantityChangeListener = onQuantityChangeListener;
     }
 
     @NonNull
@@ -43,10 +49,22 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         CartItem cartItem = cartItems.get(position);
         holder.productImage.setImageResource(cartItem.getProductImageResId());
         holder.productName.setText(cartItem.getProductName());
-        holder.productPrice.setText(String.format("%.2f ₽", cartItem.getProductPrice()));
+        holder.productPrice.setText(String.format("%.2f ₽", cartItem.getProductPrice() * cartItem.getQuantity()));
         holder.productQuantity.setText(String.valueOf(cartItem.getQuantity()));
 
         holder.removeButton.setOnClickListener(v -> onRemoveItemListener.onRemoveItem(position));
+
+        holder.decreaseButton.setOnClickListener(v -> {
+            if (cartItem.getQuantity() > 1) {
+                cartItem.setQuantity(cartItem.getQuantity() - 1);
+                onQuantityChangeListener.onQuantityChanged(position, cartItem.getQuantity());
+            }
+        });
+
+        holder.increaseButton.setOnClickListener(v -> {
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            onQuantityChangeListener.onQuantityChanged(position, cartItem.getQuantity());
+        });
     }
 
     @Override
@@ -57,7 +75,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public static class CartViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
         TextView productName, productPrice, productQuantity;
-        Button removeButton;
+        Button removeButton, increaseButton, decreaseButton;
 
         public CartViewHolder(View itemView) {
             super(itemView);
@@ -66,6 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             productPrice = itemView.findViewById(R.id.productPrice);
             productQuantity = itemView.findViewById(R.id.productQuantity);
             removeButton = itemView.findViewById(R.id.removeButton);
+            increaseButton = itemView.findViewById(R.id.increaseButton);  // Кнопка увеличения
+            decreaseButton = itemView.findViewById(R.id.decreaseButton);  // Кнопка уменьшения
         }
     }
 }

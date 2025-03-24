@@ -33,6 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Добавить в корзину" />
+        android:backgroundTint="@color/error_color"
+
+        android:text="Добавить в корзину"
+        android:textColor="#ffffff"/>
 
 </LinearLayout>

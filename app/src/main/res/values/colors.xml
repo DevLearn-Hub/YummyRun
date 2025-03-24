@@ -1,28 +1,31 @@
 <resources>
     <!-- Основные цвета -->
-    <color name="main_color">#F6AE38</color> <!-- Яркий желтый -->
-    <color name="accent_color">#FF5722</color> <!-- Приглушенный оранжевый -->
+    <color name="main_color">#BC1000</color> <!-- Тёмно-синий для акцентов -->
+    <color name="accent_color">#FED035</color> <!-- Спокойный жёлтый для выделения -->
+    <color name="highlight_color">#E1211E</color> <!-- Красный для акцентных элементов -->
+
 
     <!-- Фоновые цвета -->
-    <color name="background_color">#FFFFFF</color> <!-- Белый для основного фона -->
     <color name="secondary_background_color">#FFF8E1</color> <!-- Светло-желтый для второстепенных фонов -->
     <color name="background_color_splash">#FED035</color> <!-- Белый для основного фона -->
+    <color name="background_color">#FFFFFF</color> <!-- Светло-серый фон -->
+    <color name="card_background">#FFFFFF</color> <!-- Белый для карточек и контейнеров -->
+    <color name="divider_color">#E0E0E0</color> <!-- Серый для разделителей -->
 
     <!-- Текстовые цвета -->
-    <color name="text_primary">#212121</color> <!-- Темный цвет для основного текста -->
-    <color name="text_secondary">#757575</color> <!-- Серый для второстепенного текста -->
-    <color name="text_button">#FFFFFF</color> <!-- Белый для текста кнопок -->
+    <color name="text_primary">#333333</color> <!-- Тёмно-серый для основного текста -->
+    <color name="text_secondary">#757575</color> <!-- Светло-серый для описательного текста -->
+    <color name="text_button">#FFFFFF</color> <!-- Белый текст на кнопках -->
+
 
     <!-- Цвета для текста под кнопкой -->
     <color name="text_link">#FF7043</color> <!-- Более мягкий оранжевый -->
 
     <!-- Цвета состояния -->
-    <color name="error_color">#D32F2F</color> <!-- Красный для ошибок -->
-    <color name="success_color">#4CAF50</color> <!-- Зеленый для успешных действий -->
+    <color name="error_color">#E1211E</color> <!-- Красный для ошибок -->
+    <color name="success_color">#4CAF50</color> <!-- Зелёный для успеха -->
 
     <!-- Прочие цвета -->
-    <color name="divider_color">#BDBDBD</color> <!-- Серый для разделителей -->
-    <color name="highlight_color">#FFC107</color> <!-- Ярко-желтый для выделений -->
     <color name="black">#1D3149</color> <!-- Ярко-желтый для выделений -->
 
 </resources>

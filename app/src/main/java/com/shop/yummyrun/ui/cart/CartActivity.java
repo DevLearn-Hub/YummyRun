@@ -49,7 +49,14 @@ public class CartActivity extends AppCompatActivity {
             saveCartToPreferences();
         };
 
-        cartAdapter = new CartAdapter(cartItems, onRemoveItemListener);
+        CartAdapter.OnQuantityChangeListener onQuantityChangeListener = (position, newQuantity) -> {
+            cartItems.get(position).setQuantity(newQuantity);
+            cartAdapter.notifyItemChanged(position);
+            updateTotalPrice();
+            saveCartToPreferences();
+        };
+
+        cartAdapter = new CartAdapter(cartItems, onRemoveItemListener, onQuantityChangeListener);
         cartRecyclerView.setAdapter(cartAdapter);
 
         updateTotalPrice();
@@ -166,4 +173,6 @@ public class CartActivity extends AppCompatActivity {
 
     private void cancelOrder() {
     }
+    
+
 }

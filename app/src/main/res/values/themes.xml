@@ -5,4 +5,9 @@
     </style>
 
     <style name="Theme.YummyRun" parent="Base.Theme.YummyRun" />
+
+    <style name="BottomNavNoFocus" parent="Widget.Design.BottomNavigationView">
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
 </resources>

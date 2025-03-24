@@ -3,4 +3,8 @@
     <style name="Base.Theme.YummyRun" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    <style name="BottomNavNoFocus" parent="Widget.Design.BottomNavigationView">
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
 </resources>
